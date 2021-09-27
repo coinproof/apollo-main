@@ -1,0 +1,204 @@
+<section>
+	<div class="mobile_section d-block d-sm-none">
+		<header class="header-mobile ">
+			<div class="d-flex justify-content-around p-3">
+				<div class=""> <img class="img-fluid logo" src="../../assets/images/Logo.png" alt=""> </div>
+				<div class="text-end">
+					<button *ngIf="!isWalletConnected" class="btn-lg  connectWalletButton" (click)="connectWallet(isWalletConnected)">CONNECT WALLET</button>
+					<p *ngIf="isWalletConnected" class="text-wrap text-break" style="width: 13rem;">{{userAccountAddress}}</p>
+				</div>
+			</div>
+		</header>
+		<div class="tab-content">
+			<ul class="nav nav-pills d-flex justify-content-around align-items-center" id="pills-tab" role="tablist">
+				<li class="nav-item" role="presentation">
+					<button class="nav-link active " id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">APOLLO</button>
+				</li>
+				<li class="nav-item" role="presentation">
+					<button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">PENDING
+						<br>REWARDS</button>
+				</li>
+				<li class="nav-item" role="presentation">
+					<button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">PAID
+						<br> REWARDS</button>
+				</li>
+			</ul>
+			<div class="tab-content" id="pills-tabContent" *ngIf="isWalletConnected">
+				<div class="row tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+					<div class=" bd-highlight tabitems">
+						<div class="p-2 bd-highlight" style="margin-top: 2rem;">
+							<div class="col-12 text-center">
+								<h3>TOTAL REWARDS PAID TO HODLERS</h3>
+								<p>$APOLLO = $ {{totalRewardsUSD}}</p>
+							</div>
+						</div>
+						<div class="p-2 bd-highlight d-flex flex-column text-center align-items-center flex-column bd-highlight">
+							<div class=" grad">
+								<h3>TOTAL SUPPLY</h3>
+								<p>{{totalSupply | number:'0.0-0'}}</p>
+							</div>
+							<div class=" grad">
+								<h3>TOTAL BURNED</h3>
+								<p>{{r2data | number:'0.0-0'}}</p>
+							</div>
+							<div class=" grad">
+								<h3>CIRCULATING SUPPLY</h3>
+								<p>{{r3data | number:'0.0-0'}}</p>
+							</div>
+						</div>
+						<div class="p-2 bd-highlight">
+							<button class="btn btn-lg btn-info buyMore" [routerLink]="['/poocoin']" routerLinkActive="router-link-active">BUY APOLLO</button>
+						</div>
+					</div>
+				</div>
+				<div class="row tab-pane fade text-center" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+					<div class="tabitems bd-highlight">
+						<div class="p-2 bd-highlight" style="margin-top: 2rem;">
+							<div class="col-12">
+								<h3>TOTAL REWARDS PAID TO HODLERS</h3>
+								<p>$APOLLO = $ {{totalRewardsUSD}}</p>
+							</div>
+						</div>
+						<div class="p-2 bd-highlight d-flex align-items-center flex-column bd-highlight">
+							<div class=" grad">
+								<h3>BNB</h3>
+								<p>{{penging_BNB | number:'0.0-6'}}</p>
+							</div>
+							<div class=" grad">
+								<h3>SAFEARN</h3>
+								<p>{{pending_safeearn | number:'0.0-6'}}</p>
+							</div>
+							<div class=" grad">
+								<h3>TOTAL REWARDS</h3>
+								<p>$ {{totalPendingRewards | number:'0.0-6'}}</p>
+							</div>
+						</div>
+						<div class="p-2 bd-highlight">
+							<button class="btn btn-lg btn-info claimreward" (click)="claimRewards()">CLAIM REWARDS</button>
+						</div>
+					</div>
+				</div>
+				<div class="row tab-pane fade text-center" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+					<div class="tabitems bd-highlight">
+						<div class="p-2 bd-highlight" style="margin-top: 2rem;">
+							<div class="col-12">
+								<h3>TOTAL REWARDS PAID TO HODLERS</h3>
+								<p>$APOLLO = $ {{totalRewardsUSD}}</p>
+							</div>
+						</div>
+						<div class="p-2 bd-highlight  d-flex align-items-center flex-column bd-highlight">
+							<div class=" grad">
+								<h3>BNB</h3>
+								<p>{{paidBNB | number:'0.0-6'}}</p>
+							</div>
+							<div class=" grad">
+								<h3>SAFEARN</h3>
+								<p>{{paidSafeEarn | number:'0.0-6'}}</p>
+							</div>
+							<div class=" grad">
+								<h3>TOTAL REWARDS</h3>
+								<p>$ {{totalPaidRewards | number:'0.0-6'}}</p>
+							</div>
+						</div>
+						<div class="p-2 bd-highlight ">
+							<button class="btn btn-lg mobgrid" [routerLink]="['/poocoin']" routerLinkActive="router-link-active">BUY APOLLO</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="tab-content" id="pills-tabContent" *ngIf="!isWalletConnected">
+				<div class="row tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+					<div class="tabitems bd-highlight">
+						<div class="p-2 bd-highlight ">
+							<div class="col-12 d-flex justify-content-center align-items-center gridimg"> <img class="img-fluid" src="../../assets/images/MobilePlanetGrid.png" alt="">
+								<h1 class="gridtxt text-center">PLEASE <br> CONNECT <br> A WALLET</h1> </div>
+						</div>
+						<div class="p-2 bd-highlight ">
+							<button class="btn btn-lg mobgrid" [routerLink]="['/poocoin']" routerLinkActive="router-link-active">BUY APOLLO</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Desktop View -->
+	<div class="desktop_section container d-none d-sm-flex">
+		<div class="header-section">
+				<div class="logocontainer"> 
+                    <img class="logo" src="../../assets/images/Logo.png" alt=""> 
+                </div>
+				<div class="headertext text-center ">
+					<p><b>APOLLO DIVIDEND DASHBOARD</b></p>
+				</div>
+				<div class="text-end">
+					<button *ngIf="!isWalletConnected" class="btn-lg  connectWalletButton" (click)="connectWallet(isWalletConnected)">CONNECT WALLET</button>
+					<p *ngIf="isWalletConnected" class="text-wrap text-break" style="width: 11rem;">{{userAccountAddress}}</p>
+				</div>
+		</div>
+		<div class="apolloheading ">
+			<h3>TOTAL REWARDS PAID TO HODLERS</h3> <img class="curve img-fluid" src="../../assets/images/curve.png" alt="">
+			<h4 class="aftercurve">$APOLLO = $ {{totalRewardsUSD}}</h4> 
+        </div>
+		<div class="container midsection ">
+			<div class="statistics ">
+				<div class="category">
+					<h3><b>STATISTICS CATEGORIES</b></h3> </div>
+				<div class="details">
+					<h3><b>{{statisticLabel}}</b></h3> </div>
+			</div>
+			<div class="planet">
+				<div class="leftSection text-start">
+					<div class="row left1" (click)="generalData()"> <img [src]="isButton == 'generalData' ? left1_activated : left1_notActivated " alt="apollo general data image">
+						<div class="rowtext">
+							<h4>APOLLO</h4>
+							<p>APOLLO GENERAL DATA</p>
+						</div>
+					</div>
+					<div class="row left2" (click)="paidRewards()"> <img [src]="isButton == 'paidRewards' ? left2_activated : left2_notActivated " alt="paid rewards image">
+						<div class="rowtext">
+							<h4>PAID REWARDS</h4>
+							<p>PAID TO WALLET</p>
+						</div>
+					</div>
+					<div class="row left3" style="margin-right:-21px" (click)="pendingRewards()"> <img [src]="isButton == 'pendingRewards' ? left3_activated : left3_notActivated " alt="claim reward image">
+						<div class="rowtext">
+							<h4>PENDING REWARDS</h4>
+							<p>CLAIM YOUR REWARDS NOW</p>
+						</div>
+					</div>
+				</div>
+				<div class="planetSection"> <img class="img-fluid" [src]="planetImage" alt="globe image"> </div>
+				<div class="rightSection text-end">
+					<div class="row right1"> <img [src]="isWalletConnected ? right1_activated : right1_notactivated" alt="">
+						<div class="rowtext text-end">
+							<h4>{{ r1label }}</h4>
+							<p>{{isButton == 'generalData' ? (r1data | number:'0.0-0') : (r1data | number:'0.0-6')}}</p>
+						</div>
+					</div>
+					<div class="row right2"> <img [src]="isWalletConnected ? right2_activated : right2_notactivated" alt="">
+						<div class="rowtext text-end">
+							<h4>{{ r2label }}</h4>
+							<p [ngStyle]="{'font-size': !isWalletConnected ? '18pt' : '8pt' }">{{ isWalletConnected ? (isButton == 'generalData'? (r2data | number:'0.0-0') : (r2data | number:'0.0-6')) : r2data }}</p>
+						</div>
+					</div>
+					<div class="row right3" style="margin-left: -21px;"> <img [src]="isWalletConnected ? right3_activated : right3_notactivated" alt="">
+						<div class="rowtext text-end">
+							<h4>{{r3label}}</h4>
+							<p>{{isButton == 'generalData' ? '' : '$ '}}{{isButton == 'generalData' ? (r3data | number:'0.0-0') : (r3data | number:'0.0-6')}}</p>
+						</div>
+					</div>
+					<div class=" text-end action">
+						<button *ngIf="isButton == 'paidRewards'" class="btn  desktop-claimreward" [routerLink]="['/poocoin']" routerLinkActive="router-link-active">BUY MORE APOLLO</button>
+						<button *ngIf="isButton == 'pendingRewards'" class="btn  desktop-claimreward" (click)="claimRewards()">CLAIM REWARDS</button>
+						<button *ngIf="isButton == 'generalData'" class="btn  desktop-claimreward" [routerLink]="['/poocoin']" routerLinkActive="router-link-active">BUY APOLLO</button>
+					</div>
+				</div>
+			</div>
+            <div class="footer"> <img class="" src="../../assets/images/RoundedRectanglebottom.png" alt="">
+				<p class="last-text text-center">*Rewards are auto distributed to your wallets every hour (depending on trade volume).
+					<br> You can choose to claim the rewards manually by paying gas fee. </p>
+		</div>
+		</div>
+        
+	</div>
+</section>

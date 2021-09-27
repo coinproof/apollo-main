@@ -1,0 +1,8 @@
+@font-face {
+    font-family: FuturaBold;
+    src: url("./FuturaBold.ttf") format("trueType");
+}
+@font-face {
+    font-family: FuturaBook;
+    src: url("./FuturaBook.ttf") format("trueType");
+}

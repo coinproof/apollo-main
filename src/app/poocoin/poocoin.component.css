@@ -1,0 +1,16 @@
+.poocoin{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    background: #303032;
+    background-size: contain;
+    min-width: 100%;
+    width: max-content;
+    min-height: 100vh;
+    height: 115vh;
+}
+.poocoin button{
+    background: transparent !important;
+    border: 2px solid white;
+}
